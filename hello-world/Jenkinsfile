@@ -6,6 +6,14 @@ pipeline {
                 echo 'This stage will be executed first.'
             }
         }
+        stage ('phase'){
+                    options {
+                        timeout(time: 1, unit: 'HOURS') 
+                    }
+                    steps{
+                        echo 'Phrase'
+                    }
+        }
         stage('Static Analysis') {
             steps {
                 echo 'Run the static analysis to the code' 
