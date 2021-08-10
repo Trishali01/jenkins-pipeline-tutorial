@@ -21,13 +21,15 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code' 
-                sh 'java -version'
             }
         }
         stage('Run Integration Tests') {
             steps {
                 echo 'Run only crucial integration tests from the source code' 
             }
+        }
+        stage('Maven build') {
+            buildInfo = rtMaven.run pom: 'maven-example/pom.xml', goals: 'package'
         }
         stage('Publish Artifacts') {
             steps {
