@@ -18,16 +18,14 @@ pipeline {
                 echo 'Added an extra echo'
             }
         }
+        stage('Example Build') {
+            steps {
+                sh 'mvn -B clean verify'
+            }
+        }
         stage('Run Unit Tests') {
             steps {
                 echo 'Run unit tests from the source code' 
-            }
-        }
-        stage('Example Test') {
-            agent { docker 'openjdk:8-jre' } 
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
             }
         }
         stage('Run Integration Tests') {
