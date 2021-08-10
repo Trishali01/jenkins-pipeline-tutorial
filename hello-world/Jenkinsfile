@@ -6,7 +6,7 @@ pipeline {
                 echo 'This stage will be executed first.'
             }
         }
-        stage ('phase'){
+        stage ('Phase'){
                     options {
                         timeout(time: 1, unit: 'HOURS') 
                     }
