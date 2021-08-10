@@ -15,6 +15,7 @@ pipeline {
         stage('Security Check') {
             steps {
                 echo 'Run the security check against the application' 
+                echo 'Added an extra echo'
             }
         }
         stage('Run Unit Tests') {
