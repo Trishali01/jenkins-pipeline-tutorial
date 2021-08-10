@@ -1,6 +1,14 @@
 pipeline {
     agent any 
     stages {
+        stage('Non-Sequential Stage') {
+            agent {
+                label 'for-non-sequential'
+            }
+            steps {
+                echo "On Non-Sequential Stage"
+            }
+        }
         stage('Static Analysis') {
             steps {
                 echo 'Run the static analysis to the code' 
@@ -27,9 +35,6 @@ pipeline {
             steps {
                 echo 'Run only crucial integration tests from the source code' 
             }
-        }
-        stage('Maven build') {
-            buildInfo = rtMaven.run pom: 'maven-example/pom.xml', goals: 'package'
         }
         stage('Publish Artifacts') {
             steps {
