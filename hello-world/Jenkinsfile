@@ -1,12 +1,9 @@
 pipeline {
     agent any 
     stages {
-        stage('Non-Sequential Stage') {
-            agent {
-                label 'for-non-sequential'
-            }
+        stage('Non-Parallel Stage') {
             steps {
-                echo "On Non-Sequential Stage"
+                echo 'This stage will be executed first.'
             }
         }
         stage('Static Analysis') {
